@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/* ------------------------------
+   THEME VARIABLES
+--------------------------------*/
+@theme {
+    /* Solid colors */
+    --color-primary: #6366F1;
+    --color-secondary: #A855F7;
+    --color-neon: #00eaff;
+    --color-accent: #ff4ecd;
+
+    /* Gradients */
+    --bg-gradient-primary: linear-gradient(90deg, #6366F1, #A855F7);
+    --bg-gradient-secondary: linear-gradient(90deg, #A855F7, #ff4ecd);
+    --bg-gradient-neon: linear-gradient(90deg, #00eaff, #6366F1);
+}
+
+/* ------------------------------
+   BACKGROUND UTILITIES
+--------------------------------*/
+.bg-primary {
+    background: var(--bg-gradient-primary);
+}
+
+.bg-secondary {
+    background: var(--bg-gradient-secondary);
+}
+
+.bg-neon {
+    background: var(--bg-gradient-neon);
+}
+
+/* ------------------------------
+   TEXT GRADIENT UTILITIES
+--------------------------------*/
+.text-primary-gradient {
+    background: var(--bg-gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.text-secondary-gradient {
+    background: var(--bg-gradient-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.text-neon-gradient {
+    background: var(--bg-gradient-neon);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ------------------------------
+   SOLID COLOR TEXT UTILITIES
+--------------------------------*/
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-secondary {
+    color: var(--color-secondary);
+}
+
+.text-neon {
+    color: var(--color-neon);
+}
+
+.text-accent {
+    color: var(--color-accent);
+}
+
+/* ------------------------------
+   BORDER UTILITIES
+--------------------------------*/
+.border-primary {
+    border-color: var(--color-primary);
+}
+
+.border-secondary {
+    border-color: var(--color-secondary);
+}
+
+.border-neon {
+    border-color: var(--color-neon);
+}
+
+.border-accent {
+    border-color: var(--color-accent);
+}
+
+/* ------------------------------
+   GLOW / SHADOW UTILITIES
+--------------------------------*/
+.shadow-neon {
+    box-shadow: 0 0 20px var(--color-neon);
+}
+
+.shadow-primary {
+    box-shadow: 0 0 20px var(--color-primary);
+}
+
+.shadow-accent {
+    box-shadow: 0 0 20px var(--color-accent);
+}
+
+/* ------------------------------
+   GLASS EFFECT
+--------------------------------*/
+.glass {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* small helper for neon outline (optional) */
+.neon-outline {
+    box-shadow: 0 6px 40px rgba(99, 102, 241, 0.08), 0 0 18px rgba(0, 234, 255, 0.12);
+}
