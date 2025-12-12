@@ -119,6 +119,11 @@ const Navbar = () => {
                             Dashboard
                         </Link>
                     )}
+                    {token && (
+                        <button className={primaryBtnClasses} onClick={onLogoutHandler}>
+                            Logout
+                        </button>
+                    )}
                     {!token && (
                         <Link
                             to="/register"
