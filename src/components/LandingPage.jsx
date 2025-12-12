@@ -22,7 +22,6 @@ const fadeUp = {
 
 export default function LandingPage() {
     const {token} = useStoreContext()
-    console.log("Token from landing page: " + token)
 
     return (
         // Consistent dark background

@@ -24,7 +24,6 @@ const LoginPage = () => {
     const [loader, setLoader] = useState(false);
 
     const loginHandler = async (data) => {
-        console.log("Registration data:", data);
         // Implement your registration logic here (e.g., API call)
         setLoader(true);
         try{
