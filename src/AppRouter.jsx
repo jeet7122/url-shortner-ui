@@ -19,7 +19,7 @@ const AppRouter = () => {
             <Toaster position='bottom-center'/>
             <Routes>
                 <Route path="/" element={<LandingPage/>}/>
-                <Route path="/about" element={<PrivateRoute publicPage={true}><AboutPage/></PrivateRoute> }/>
+                <Route path="/about" element={<AboutPage/>}/>
                 <Route path="/register" element={<PrivateRoute publicPage={true}><RegisterPage/></PrivateRoute>}/>
                 <Route path="/login" element={<PrivateRoute publicPage={true}><LoginPage/></PrivateRoute>}/>
                 <Route path="/dashboard" element={<PrivateRoute publicPage={false}><DashboardLayout/></PrivateRoute>}/>
