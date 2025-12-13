@@ -11,6 +11,9 @@ import Footer from "./components/Footer.jsx";
 import ShortenUrlPage from "./components/ShortenUrlPage.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
+import PrivacyPolicy from "./components/PrivacyPolicy.jsx";
+import TermsOfService from "./components/TermsOfService.jsx";
+import ContactUs from "./components/ContactUs.jsx";
 
 const AppRouter = () => {
     return (
@@ -20,6 +23,9 @@ const AppRouter = () => {
             <Routes>
                 <Route path="/" element={<LandingPage/>}/>
                 <Route path="/about" element={<AboutPage/>}/>
+                <Route path="/privacy" element={<PrivacyPolicy/>}/>
+                <Route path="/terms" element={<TermsOfService/>}/>
+                <Route path="/contact" element={<ContactUs/>}/>
                 <Route path="/register" element={<PrivateRoute publicPage={true}><RegisterPage/></PrivateRoute>}/>
                 <Route path="/login" element={<PrivateRoute publicPage={true}><LoginPage/></PrivateRoute>}/>
                 <Route path="/dashboard" element={<PrivateRoute publicPage={false}><DashboardLayout/></PrivateRoute>}/>
