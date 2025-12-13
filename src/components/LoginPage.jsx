@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import { useForm } from "react-hook-form";
+import {useForm} from "react-hook-form";
 // Ensure this import path is correct for your file structure
 import TextField from "./TextField.jsx"
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import api from "../api/api.js";
 import toast from "react-hot-toast";
 import {useStoreContext} from "../contextApi/ContextApi.jsx";
@@ -11,7 +11,7 @@ import {FaEye, FaEyeSlash} from "react-icons/fa";
 
 
 const LoginPage = () => {
-    const { register, reset ,handleSubmit, formState: { errors } } = useForm({
+    const {register, reset, handleSubmit, formState: {errors}} = useForm({
         defaultValues: {
             username: "",
             password: ""
@@ -28,7 +28,7 @@ const LoginPage = () => {
     const loginHandler = async (data) => {
         // Implement your registration logic here (e.g., API call)
         setLoader(true);
-        try{
+        try {
             const {data: response} = await api.post("/api/auth/login", data);
             //Store token in local storage
             localStorage.setItem("JWT_TOKEN", JSON.stringify(response.token));
@@ -36,12 +36,10 @@ const LoginPage = () => {
             toast.success("User Logged-in successfully!");
             reset();
             navigate("/dashboard");
-        }
-        catch(err){
+        } catch (err) {
             console.log(err)
             toast.error("Something went wrong!");
-        }
-        finally {
+        } finally {
             setLoader(false);
         }
     }
@@ -50,73 +48,83 @@ const LoginPage = () => {
         // 1. Consistent dark background (bg-[#0d0d10])
         // 2. min-h-screen for full height
         // 3. pt-24 to push content below the fixed Navbar
-        <div className="bg-[#0d0d10] min-h-screen pt-24 pb-12 flex items-center justify-center px-5 sm:px-10">
+        <>
+            <title>Login to url-shrink-it Dashboard</title>
 
-            <form
-                onSubmit={handleSubmit(loginHandler)}
-                // Styled container: glass effect, dark border, rounded, and accent shadow
-                className="w-full max-w-sm sm:max-w-md p-6 sm:p-8 rounded-xl glass shadow-accent/50 border border-gray-800"
-            >
-                <h1 className="text-center font-extrabold text-3xl mb-2 text-neon-gradient">
-                    Login to your account
-                </h1>
-                <p className="text-center text-gray-500 mb-6">Start shrinking your links today!</p>
 
-                {/* ------------------ Form Fields (Correct TextField Usage) ------------------ */}
-                <div className="space-y-4">
+            <meta name="description"
+                  content="Log in to your urlShrinkit account to access your dashboard, view analytics, and manage your links."/>
 
-                    {/* Username Field */}
-                    <TextField
-                        label="Username"
-                        id="username"
-                        placeholder="Enter your username"
-                        type="text"
-                        register={register}
-                        errors={errors}
-                        required={true}
-                        message="Username is required"
-                        className="text-white" // <-- Added text-white for input color
-                    />
 
-                    {/* Password Field */}
-                    <TextField
-                        label="Password"
-                        id="password"
-                        placeholder="Minimum 6 characters"
-                        type={showPassword ? "text" : "password"}
-                        register={register}
-                        errors={errors}
-                        required
-                        minLength={{
-                            value: 6,
-                            message: "Minimum 6 characters"
-                        }}
-                        className="text-white"
-                        rightIcon={
-                            showPassword ? <FaEyeSlash/> : <FaEye/>
-                        }
-                        onRightIconClick={() => setShowPassword(prev => !prev)}
-                    />
+            <link rel="canonical" href="https://urlshrinkit.store/login"/>
+            <div className="bg-[#0d0d10] min-h-screen pt-24 pb-12 flex items-center justify-center px-5 sm:px-10">
 
-                </div>
-                {/* ------------------------------------------------------------------------- */}
-
-                {/* Submit Button (Styled to match Sign Up button from Navbar) */}
-                <button
-                    disabled={loader}
-                    type="submit"
-                    className="w-full mt-8 flex items-center justify-center gap-3 px-8 py-3 text-lg font-bold rounded-xl glass transition-all duration-300 ease-in-out text-neon border-2 border-neon hover:bg-neon hover:text-black hover:scale-[1.01] shadow-neon/40 hover:shadow-neon"
+                <form
+                    onSubmit={handleSubmit(loginHandler)}
+                    // Styled container: glass effect, dark border, rounded, and accent shadow
+                    className="w-full max-w-sm sm:max-w-md p-6 sm:p-8 rounded-xl glass shadow-accent/50 border border-gray-800"
                 >
-                    {loader ? "Loading..." : "Login"}
-                </button>
+                    <h1 className="text-center font-extrabold text-3xl mb-2 text-neon-gradient">
+                        Login to your account
+                    </h1>
+                    <p className="text-center text-gray-500 mb-6">Start shrinking your links today!</p>
 
-                <p className="text-center text-sm mt-4 text-gray-500">
-                    Don't have an account'?
-                    <Link to="/register" className="text-neon hover:underline ml-1">Register</Link>
-                </p>
+                    {/* ------------------ Form Fields (Correct TextField Usage) ------------------ */}
+                    <div className="space-y-4">
 
-            </form>
-        </div>
+                        {/* Username Field */}
+                        <TextField
+                            label="Username"
+                            id="username"
+                            placeholder="Enter your username"
+                            type="text"
+                            register={register}
+                            errors={errors}
+                            required={true}
+                            message="Username is required"
+                            className="text-white" // <-- Added text-white for input color
+                        />
+
+                        {/* Password Field */}
+                        <TextField
+                            label="Password"
+                            id="password"
+                            placeholder="Minimum 6 characters"
+                            type={showPassword ? "text" : "password"}
+                            register={register}
+                            errors={errors}
+                            required
+                            minLength={{
+                                value: 6,
+                                message: "Minimum 6 characters"
+                            }}
+                            className="text-white"
+                            rightIcon={
+                                showPassword ? <FaEyeSlash/> : <FaEye/>
+                            }
+                            onRightIconClick={() => setShowPassword(prev => !prev)}
+                        />
+
+                    </div>
+                    {/* ------------------------------------------------------------------------- */}
+
+                    {/* Submit Button (Styled to match Sign Up button from Navbar) */}
+                    <button
+                        disabled={loader}
+                        type="submit"
+                        className="w-full mt-8 flex items-center justify-center gap-3 px-8 py-3 text-lg font-bold rounded-xl glass transition-all duration-300 ease-in-out text-neon border-2 border-neon hover:bg-neon hover:text-black hover:scale-[1.01] shadow-neon/40 hover:shadow-neon"
+                    >
+                        {loader ? "Loading..." : "Login"}
+                    </button>
+
+                    <p className="text-center text-sm mt-4 text-gray-500">
+                        Don't have an account'?
+                        <Link to="/register" className="text-neon hover:underline ml-1">Register</Link>
+                    </p>
+
+                </form>
+            </div>
+        </>
     )
 }
 export default LoginPage;

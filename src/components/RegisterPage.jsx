@@ -91,112 +91,122 @@ const RegisterPage = () => {
     };
 
     return (
-        <div className="bg-[#0d0d10] min-h-screen pt-24 pb-12 flex items-center justify-center px-5 sm:px-10">
-            <form
-                onSubmit={handleSubmit(registerHandler)}
-                className="w-full max-w-sm sm:max-w-md p-6 sm:p-8 rounded-xl glass shadow-accent/50 border border-gray-800"
-            >
-                <h1 className="text-center font-extrabold text-3xl mb-2 text-neon-gradient">
-                    Create Your Account
-                </h1>
-                <p className="text-center text-gray-500 mb-6">
-                    Start shrinking your links today!
-                </p>
+        <>
+            <title>Register for Free - urlShrinkit Account</title>
 
-                <div className="space-y-4">
 
-                    {/* Username */}
-                    <div>
+            <meta name="description"
+                  content="Create a free urlShrinkit account to manage, track, and analyze all your shortened links."/>
+
+
+            <link rel="canonical" href="https://urlshrinkit.store/register"/>
+            <div className="bg-[#0d0d10] min-h-screen pt-24 pb-12 flex items-center justify-center px-5 sm:px-10">
+                <form
+                    onSubmit={handleSubmit(registerHandler)}
+                    className="w-full max-w-sm sm:max-w-md p-6 sm:p-8 rounded-xl glass shadow-accent/50 border border-gray-800"
+                >
+                    <h1 className="text-center font-extrabold text-3xl mb-2 text-neon-gradient">
+                        Create Your Account
+                    </h1>
+                    <p className="text-center text-gray-500 mb-6">
+                        Start shrinking your links today!
+                    </p>
+
+                    <div className="space-y-4">
+
+                        {/* Username */}
+                        <div>
+                            <TextField
+                                label="Username"
+                                id="username"
+                                placeholder="Choose a unique username"
+                                type="text"
+                                register={register}
+                                errors={errors}
+                                required
+                                message="Username is required"
+                                minLength={{
+                                    value: USERNAME_MIN_LENGTH,
+                                    message: `Minimum ${USERNAME_MIN_LENGTH} characters`
+                                }}
+                                className="text-white"
+                            />
+
+                            {checkingUsername && (
+                                <p className="text-sm text-gray-400 mt-1">
+                                    Checking availability…
+                                </p>
+                            )}
+
+                            {!checkingUsername &&
+                                username?.length >= USERNAME_MIN_LENGTH &&
+                                !errors.username && (
+                                    <p className="text-sm text-green-500 mt-1">
+                                        Username is available ✔
+                                    </p>
+                                )}
+                        </div>
+
+                        {/* Email */}
                         <TextField
-                            label="Username"
-                            id="username"
-                            placeholder="Choose a unique username"
-                            type="text"
+                            label="Email Address"
+                            id="email"
+                            placeholder="you@example.com"
+                            type="email"
                             register={register}
                             errors={errors}
                             required
-                            message="Username is required"
-                            minLength={{
-                                value: USERNAME_MIN_LENGTH,
-                                message: `Minimum ${USERNAME_MIN_LENGTH} characters`
-                            }}
+                            message="Email is required"
                             className="text-white"
                         />
 
-                        {checkingUsername && (
-                            <p className="text-sm text-gray-400 mt-1">
-                                Checking availability…
-                            </p>
-                        )}
+                        {/* Password */}
+                        <TextField
+                            label="Password"
+                            id="password"
+                            placeholder="Minimum 6 characters"
+                            type={showPassword ? "text" : "password"}
+                            register={register}
+                            errors={errors}
+                            required
+                            minLength={{
+                                value: 6,
+                                message: "Minimum 6 characters"
+                            }}
+                            className="text-white"
+                            rightIcon={
+                                showPassword ? <FaEyeSlash/> : <FaEye/>
+                            }
+                            onRightIconClick={() => setShowPassword(prev => !prev)}
+                        />
 
-                        {!checkingUsername &&
-                            username?.length >= USERNAME_MIN_LENGTH &&
-                            !errors.username && (
-                                <p className="text-sm text-green-500 mt-1">
-                                    Username is available ✔
-                                </p>
-                            )}
                     </div>
 
-                    {/* Email */}
-                    <TextField
-                        label="Email Address"
-                        id="email"
-                        placeholder="you@example.com"
-                        type="email"
-                        register={register}
-                        errors={errors}
-                        required
-                        message="Email is required"
-                        className="text-white"
-                    />
-
-                    {/* Password */}
-                    <TextField
-                        label="Password"
-                        id="password"
-                        placeholder="Minimum 6 characters"
-                        type={showPassword ? "text" : "password"}
-                        register={register}
-                        errors={errors}
-                        required
-                        minLength={{
-                            value: 6,
-                            message: "Minimum 6 characters"
-                        }}
-                        className="text-white"
-                        rightIcon={
-                            showPassword ? <FaEyeSlash/> : <FaEye/>
+                    <button
+                        type="submit"
+                        disabled={
+                            loading ||
+                            checkingUsername ||
+                            !!errors.username ||
+                            !isValid
                         }
-                        onRightIconClick={() => setShowPassword(prev => !prev)}
-                    />
-
-                </div>
-
-                <button
-                    type="submit"
-                    disabled={
-                        loading ||
-                        checkingUsername ||
-                        !!errors.username ||
-                        !isValid
-                    }
-                    className="w-full mt-8 px-8 py-3 text-lg font-bold rounded-xl glass
+                        className="w-full mt-8 px-8 py-3 text-lg font-bold rounded-xl glass
                      text-neon border-2 border-neon transition
                      hover:bg-neon hover:text-black
                      disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                    {loading ? "Registering..." : "Register"}
-                </button>
+                    >
+                        {loading ? "Registering..." : "Register"}
+                    </button>
 
-                <p className="text-center text-sm mt-4 text-gray-500">
-                    Already have an account?
-                    <Link to="/login" className="text-neon hover:underline ml-1">
-                        Log In
-                    </Link>
-                </p>
-            </form>
-        </div>
+                    <p className="text-center text-sm mt-4 text-gray-500">
+                        Already have an account?
+                        <Link to="/login" className="text-neon hover:underline ml-1">
+                            Log In
+                        </Link>
+                    </p>
+                </form>
+            </div>
+        </>
     );
 };
 
