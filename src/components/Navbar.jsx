@@ -8,6 +8,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const onLogoutHandler = () => {
+        setIsOpen(false);
         setToken(null);
         localStorage.removeItem("JWT_TOKEN");
         navigate("/login");

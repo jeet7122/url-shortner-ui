@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import api from "../api/api.js";
 import toast from "react-hot-toast";
 import {useStoreContext} from "../contextApi/ContextApi.jsx";
+import {FaEye, FaEyeSlash} from "react-icons/fa";
 
 
 const LoginPage = () => {
@@ -21,6 +22,7 @@ const LoginPage = () => {
 
     const {setToken} = useStoreContext();
 
+    const [showPassword, setShowPassword] = useState(false);
     const [loader, setLoader] = useState(false);
 
     const loginHandler = async (data) => {
@@ -80,14 +82,20 @@ const LoginPage = () => {
                     <TextField
                         label="Password"
                         id="password"
-                        placeholder="Enter your password"
-                        type="password"
+                        placeholder="Minimum 6 characters"
+                        type={showPassword ? "text" : "password"}
                         register={register}
                         errors={errors}
-                        required={true}
-                        message="Password is required"
-                        min={8} // Triggers minLength validation
-                        className="text-white" // <-- Added text-white for input color
+                        required
+                        minLength={{
+                            value: 6,
+                            message: "Minimum 6 characters"
+                        }}
+                        className="text-white"
+                        rightIcon={
+                            showPassword ? <FaEyeSlash/> : <FaEye/>
+                        }
+                        onRightIconClick={() => setShowPassword(prev => !prev)}
                     />
 
                 </div>
