@@ -33,7 +33,7 @@ const ContactUs = () => {
                             <h3 className="text-lg font-bold text-white">
                                 Support Hours
                             </h3>
-                            <p>Monday – Friday, 9:00 AM – 6:00 PM</p>
+                            <p>Available 24x7</p>
                         </div>
 
                         <div>
