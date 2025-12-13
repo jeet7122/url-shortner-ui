@@ -8,7 +8,6 @@ export default defineConfig({
   plugins: [react(), tailwindcss(), SiteMap({
       hostname: 'https://urlshrinkit.store',
       dynamicRoutes:[
-          '/',
           '/about',
           '/privacy',
           '/terms',
