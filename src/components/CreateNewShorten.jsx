@@ -73,7 +73,7 @@ const CreateNewShorten = ({setOpen, refetch}) => {
                         message='URL is required'
                         register={register}
                         errors={errors}
-                        className="bg-blue-300"
+                        className="bg-blue-300 text-white"
                     />
                 </div>
                 <button
