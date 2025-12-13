@@ -59,7 +59,7 @@ const CreateNewShorten = ({setOpen, refetch}) => {
         <div className='flex justify-center items-center bg-secondary rounded-md relative'>
             <form onSubmit={handleSubmit(createShortUrlHandler)}
                   className='sm:w-[450px] w-[360px] relative shadow-accent pt-8 pb-5 sm:px-8 px-4 rounded-lg'>
-                <h1 className='font-mono sm:mt-0 mt-3 text-center font-bold sm:text-2xl text-[22px]'>
+                <h1 className='font-mono text-green-600 sm:mt-0 mt-3 text-center font-bold sm:text-2xl text-[22px]'>
                     Create New Shorten URL
                 </h1>
                 <hr className='font-bold'/>
