@@ -56,10 +56,10 @@ const CreateNewShorten = ({setOpen, refetch}) => {
     }
 
     return (
-        <div className='flex justify-center items-center bg-secondary rounded-md relative'>
+        <div className='flex justify-center items-center bg-amber-50 rounded-md relative'>
             <form onSubmit={handleSubmit(createShortUrlHandler)}
-                  className='sm:w-[450px] w-[360px] relative shadow-accent pt-8 pb-5 sm:px-8 px-4 rounded-lg'>
-                <h1 className='font-mono text-green-600 sm:mt-0 mt-3 text-center font-bold sm:text-2xl text-[22px]'>
+                  className='sm:w-[450px] w-[360px] relative text-gray-600 pt-8 pb-5 sm:px-8 px-4 rounded-lg'>
+                <h1 className='font-mono text-slate-700 sm:mt-0 mt-3 text-center font-bold sm:text-2xl text-[22px]'>
                     Create New Shorten URL
                 </h1>
                 <hr className='font-bold'/>
@@ -73,11 +73,11 @@ const CreateNewShorten = ({setOpen, refetch}) => {
                         message='URL is required'
                         register={register}
                         errors={errors}
-                        className="bg-[#F8F8F8]"
+                        className="bg-blue-300"
                     />
                 </div>
                 <button
-                    className='bg-green-700 font-semibold text-white py-2 mt-5 px-4 rounded-xl focus:text-purple-500 focus:bg-green-500'
+                    className='bg-green-500 font-semibold text-white py-2 mt-5 px-4 rounded-xl focus:text-purple-500 focus:bg-green-500'
                     type="text"
                 >
                     {loading ? "Loading..." : "Create"}
