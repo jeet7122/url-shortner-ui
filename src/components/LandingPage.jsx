@@ -1,37 +1,24 @@
 import React from "react";
-import { motion } from "framer-motion";
+import {motion}  from "framer-motion";
 import { FaBolt, FaWrench } from "react-icons/fa";
-import {useStoreContext} from "../contextApi/ContextApi.jsx"; // Icons for the buttons
+import { useStoreContext } from "../contextApi/ContextApi.jsx";
 
-/**
- * LandingPage — Hero section for the application, featuring the new logo
- * and a streamlined button design.
- *
- * Requirements:
- * - framer-motion
- * - react-icons
- * - Tailwind v4 + the CSS theme file (must be loaded)
- * - Place the logo (image_267880.png) in your public folder as /logo.png
- */
-
-// Inherit the animation properties for consistency
 const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
 };
 
 export default function LandingPage() {
-    const {token} = useStoreContext()
+    const { token } = useStoreContext();
 
     return (
-        // Consistent dark background
-        <div className="min-h-[90vh] flex items-center justify-center px-5 sm:px-10 lg:px-20 py-20 bg-[#0d0d10] text-white">
+        <section className="min-h-[90vh] flex items-center justify-center px-5 sm:px-10 lg:px-20 py-20 bg-[#0d0d10] text-white">
             <div className="w-full max-w-5xl text-center">
 
                 {/* Logo Section */}
                 <motion.img
-                    src="logo.png" // Assumes the logo is saved in the public directory
-                    alt="Shrink-it Logo"
+                    src="logo.png"
+                    alt="URLShrinkIt Logo - Free URL Shortener"
                     variants={fadeUp}
                     initial="hidden"
                     animate="visible"
@@ -60,8 +47,8 @@ export default function LandingPage() {
                     transition={{ duration: 0.8, delay: 0.3 }}
                     className="text-gray-300 max-w-3xl mx-auto leading-relaxed text-lg sm:text-xl mb-12"
                 >
-                    The next-gen link manager for creators. Instant URL shrinking, custom slugs,
-                    and <b>real-time analytics</b>-all in one smooth dashboard.
+                    The next-gen <b>URL shortener</b> and link manager for creators. Instant URL shrinking,
+                    custom slugs, and <b>real-time analytics</b> — all in one smooth dashboard.
                 </motion.p>
 
                 {/* Call-to-Action Buttons */}
@@ -72,22 +59,23 @@ export default function LandingPage() {
                     transition={{ duration: 0.6, delay: 0.5 }}
                     className="flex flex-col sm:flex-row justify-center gap-4"
                 >
-
-                    {/* Primary Button: Create Short Links (Redesigned for sleeker Neon/Glass Look) */}
+                    {/* Primary Button */}
                     <a
-                        href="/dashboard" // Link target
+                        href="/dashboard"
+                        aria-label="Create short links dashboard"
                         className="group flex items-center justify-center gap-3 px-8 py-3 text-lg font-bold rounded-xl glass transition-all duration-300 ease-in-out
-                                   text-neon border-2 border-neon hover:bg-neon hover:text-black hover:scale-[1.05] shadow-neon/40 hover:shadow-neon"
+                       text-neon border-2 border-neon hover:bg-neon hover:text-black hover:scale-[1.05] shadow-neon/40 hover:shadow-neon"
                     >
                         <FaBolt className="text-xl transition-colors duration-300 group-hover:text-black" />
                         Create Short Links
                     </a>
 
-                    {/* Secondary Button: Manage Links (Secondary style - kept consistent) */}
+                    {/* Secondary Button */}
                     <a
-                        href="/dashboard" // Link target
+                        href="/dashboard"
+                        aria-label="Manage your links dashboard"
                         className="group flex items-center justify-center gap-3 px-8 py-3 text-lg font-bold rounded-xl glass transition-all duration-300 ease-in-out
-                                   bg-transparent border-2 border-secondary text-white hover:bg-secondary hover:shadow-accent/50 hover:scale-[1.05]"
+                       bg-transparent border-2 border-secondary text-white hover:bg-secondary hover:shadow-accent/50 hover:scale-[1.05]"
                     >
                         <FaWrench className="text-xl" />
                         Manage Links
@@ -105,6 +93,6 @@ export default function LandingPage() {
                 </motion.div>
 
             </div>
-        </div>
+        </section>
     );
 }
